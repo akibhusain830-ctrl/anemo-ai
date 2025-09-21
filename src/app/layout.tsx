@@ -2,6 +2,8 @@
 
 import { useEffect } from 'react'
 import { supabase } from '@/lib/supabaseClient'
+import { ToastProvider } from '@/components/Toast'
+import './globals.css'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   useEffect(() => {
@@ -17,7 +19,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <ToastProvider>
+          {children}
+        </ToastProvider>
+      </body>
     </html>
   )
 }
